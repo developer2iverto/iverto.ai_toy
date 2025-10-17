@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global tweaks for a soft, playful look */
+:root {
+  --radius: 14px;
+}
+
+body { 
+  @apply bg-white text-slate-800 font-body;
+}
+
+.card {
+  border-radius: var(--radius);
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full bg-brand-500 text-white px-5 py-2.5 hover:bg-brand-600 transition;
+}
+
+.container {
+  @apply mx-auto max-w-7xl px-4;
+}
