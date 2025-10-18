@@ -23,7 +23,7 @@ export default function Product() {
     <Container className="mt-10">
       <div className="grid md:grid-cols-2 gap-8">
         {(() => {
-          const origin = import.meta.env.VITE_API_ORIGIN || 'http://localhost:5000'
+          const origin = import.meta.env.VITE_API_ORIGIN || 'https://iverto-ai-toy1-h8ra.onrender.com'
           const raw = product.image || (Array.isArray(product.images) ? product.images[0] : '') || ''
           const placeholder = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="100%" height="100%" fill="#f1f5f9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#64748b" font-size="24">No image</text></svg>'
           const isDev = import.meta.env.DEV

@@ -5,8 +5,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': { target: 'http://localhost:5000', changeOrigin: true },
-      '/uploads': { target: 'http://localhost:5000', changeOrigin: true },
+      '/api': { target: 'https://iverto-ai-toy1-h8ra.onrender.com', changeOrigin: true },
+      '/uploads': { target: 'https://iverto-ai-toy1-h8ra.onrender.com', changeOrigin: true },
     }
   }
 })

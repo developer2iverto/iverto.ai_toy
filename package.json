@@ -1,0 +1,15 @@
+{
+  "name": "iverto.ai_toy",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:server": "npm run --prefix server dev",
+    "dev:client": "npm run --prefix client dev",
+    "dev": "concurrently -n server,client -c \"blue.bold\",\"green.bold\" \"npm:dev:server\" \"npm:dev:client\"",
+    "seed": "npm run --prefix server seed",
+    "start": "npm run --prefix server start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
