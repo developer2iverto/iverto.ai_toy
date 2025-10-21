@@ -13,10 +13,8 @@ if (!uri) {
   process.exit(1)
 }
 
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+// ✅ Clean connection without deprecated options
+mongoose.connect(uri)
 .then(() => {
   dbConnected = true
   console.log("✅ MongoDB connected")
