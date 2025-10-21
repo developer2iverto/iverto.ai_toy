@@ -1,4 +1,4 @@
-// server.js
+// server/src/server.js
 import express from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
@@ -7,9 +7,7 @@ import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import fs from 'fs'
 import path from 'path'
-
-// ✅ Updated path for db.js
-import dbConnected from './src/db.js'
+import dbConnected from './db.js' // ✅ db.js is inside src/
 
 import productsRouter, { fallbackProducts } from './routes/products.js'
 import authRouter from './routes/auth.js'
@@ -29,24 +27,24 @@ const app = express()
 const PORT = process.env.PORT || 5000
 const ORIGIN = process.env.FRONTEND_ORIGIN || 'http://localhost:5173'
 
-// Security and middleware
+// 🔐 Security and middleware
 app.use(helmet({ crossOriginResourcePolicy: false }))
 app.use(cors({ origin: true }))
 app.use(express.json())
 app.use(morgan('dev'))
 app.use(rateLimit({ windowMs: 60 * 1000, max: 120 }))
 
-// Ensure uploads dir exists and serve static files
+// 📁 Ensure uploads dir exists and serve static files
 const uploadsDir = path.join(process.cwd(), 'server', 'uploads')
 try { fs.mkdirSync(uploadsDir, { recursive: true }) } catch {}
 app.use('/uploads', express.static(uploadsDir))
 
-// Health check route
+// ❤️ Health check route
 app.get('/', (req, res) => {
   res.json({ status: 'ok', name: 'Baby Toys Store API', dbConnected })
 })
 
-// API routes
+// 🔗 API routes
 app.use('/api/auth', authRouter)
 app.use('/api/products', productsRouter({ dbConnected }))
 app.use('/api/cart', cartRouter)
@@ -58,14 +56,14 @@ app.use('/api/settings', settingsRouter)
 app.use('/api/offers', offersRouter)
 app.use('/api/contact', contactRouter)
 
-// Fallback route if DB is down
+// 🧯 Fallback route if DB is down
 app.get('/api/preview-products', (req, res) => {
   res.json(fallbackProducts)
 })
 
-// Error handling
+// 🚨 Error handling
 app.use(notFound)
 app.use(errorHandler)
 
-// Start server
+// 🚀 Start server
 app.listen(PORT, () => console.log(`🚀 API listening on http://localhost:${PORT}`))
