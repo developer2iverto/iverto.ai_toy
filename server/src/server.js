@@ -7,7 +7,9 @@ import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import fs from 'fs'
 import path from 'path'
-import dbConnected from './db.js' // ✅ db.js is inside src/
+
+// ✅ Use named import for dbConnected
+import { dbConnected } from './db.js'
 
 import productsRouter, { fallbackProducts } from './routes/products.js'
 import authRouter from './routes/auth.js'
