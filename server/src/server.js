@@ -7,7 +7,9 @@ import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import fs from 'fs'
 import path from 'path'
-import dbConnected from './db.js'
+
+// ✅ Updated path for db.js
+import dbConnected from './src/db.js'
 
 import productsRouter, { fallbackProducts } from './routes/products.js'
 import authRouter from './routes/auth.js'
